@@ -396,3 +396,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# UnityVLCPlayer Classes, obtain from https://github.com/bosqmode/UnityVLCPlayer
+VLC*.cs

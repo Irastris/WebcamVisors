@@ -34,11 +34,11 @@ namespace WebcamVisors
         {
             [HarmonyPatch("Update")]
             [HarmonyPostfix]
-            public static void AddPlayerReplacerComponent(ref PlayerController __instance)
+            public static void AddWebcamVisorComponent(ref PlayerController __instance)
             {
                 if (__instance.gameObject.GetComponent<WebcamVisorComponent>() == null)
                 {
-                    WebcamVisorComponent playerReplacer = __instance.gameObject.AddComponent<WebcamVisorComponent>();
+                    __instance.gameObject.AddComponent<WebcamVisorComponent>();
                 }
             }
         }
