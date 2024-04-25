@@ -1,4 +1,5 @@
 ﻿using BepInEx;
+using BepInEx.Configuration;
 using HarmonyLib;
 
 namespace WebcamVisors
@@ -17,6 +18,14 @@ namespace WebcamVisors
     public class WebcamVisors : BaseUnityPlugin
     {
         public static WebcamVisors Instance = null;
+        public static ConfigEntry<string> configWebcamTypeA;
+        public static ConfigEntry<string> configWebcamSourceA;
+        public static ConfigEntry<string> configWebcamTypeB;
+        public static ConfigEntry<string> configWebcamSourceB;
+        public static ConfigEntry<string> configWebcamTypeC;
+        public static ConfigEntry<string> configWebcamSourceC;
+        public static ConfigEntry<string> configWebcamTypeD;
+        public static ConfigEntry<string> configWebcamSourceD;
 
         public void Awake()
         {
@@ -24,6 +33,16 @@ namespace WebcamVisors
             {
                 Instance = this;
             }
+
+            configWebcamTypeA = Config.Bind("WebcamVisors.PlayerYellow", "WebcamType", "Local");
+            configWebcamTypeB = Config.Bind("WebcamVisors.PlayerOrange", "WebcamType", "Local");
+            configWebcamTypeC = Config.Bind("WebcamVisors.PlayerRed",    "WebcamType", "Local");
+            configWebcamTypeD = Config.Bind("WebcamVisors.PlayerPink",   "WebcamType", "Local");
+
+            configWebcamSourceA = Config.Bind("WebcamVisors.PlayerYellow", "WebcamSource", "OBS Virtual Camera");
+            configWebcamSourceB = Config.Bind("WebcamVisors.PlayerOrange", "WebcamSource", "OBS Virtual Camera");
+            configWebcamSourceC = Config.Bind("WebcamVisors.PlayerRed",    "WebcamSource", "OBS Virtual Camera");
+            configWebcamSourceD = Config.Bind("WebcamVisors.PlayerPink",   "WebcamSource", "OBS Virtual Camera");
 
             Harmony harmony = new Harmony(PluginInfo.GUID);
             harmony.PatchAll();
